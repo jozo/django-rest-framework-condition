@@ -21,7 +21,6 @@ Tested with:
 
 Installation
 ------------
-- [ ] check after publishing package on pypi
 
 ```bash
 pip install django-rest-framework-condition
