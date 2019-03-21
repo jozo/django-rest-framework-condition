@@ -6,7 +6,9 @@ This package allows you to use [`@condition`](https://docs.djangoproject.com/en/
 APIView from Django Rest Framework. In other words, you can use http headers 
 ETag and Last-modified with you APIs.
 
-Similarly as in Django you can use shortcuts decorators `@last_modified` and
+It doesn't create custom implementation of etags or last-modified header but uses ones from Django which means you can be sure it will be updated by Django's authors. 
+
+Similarly as in Django you can use shortcut decorators `@last_modified` and
 `@etag`.
 
 Tested with:
