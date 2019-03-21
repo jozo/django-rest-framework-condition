@@ -3,7 +3,7 @@ from datetime import datetime
 from rest_framework import views, viewsets
 from rest_framework.response import Response
 
-from rest_framework_condition import condition
+from rest_framework_condition import etag, last_modified
 
 
 def my_last_modified(request):
@@ -20,13 +20,13 @@ class NoConditionApiView(views.APIView):
 
 
 class LastModifiedApiView(views.APIView):
-    @condition(last_modified_func=my_last_modified)
+    @last_modified(my_last_modified)
     def get(self, request):
         return Response({'data': '2019'})
 
 
 class ETagApiView(views.APIView):
-    @condition(etag_func=my_etag)
+    @etag(my_etag)
     def get(self, request):
         return Response({'data': 'etag'})
 
@@ -40,20 +40,20 @@ class NoConditionViewSet(viewsets.ViewSet):
 
 
 class LastModifiedViewSet(viewsets.ViewSet):
-    @condition(last_modified_func=my_last_modified)
+    @last_modified(my_last_modified)
     def list(self, request):
         return Response({'data': '2019'})
 
-    @condition(last_modified_func=my_last_modified)
+    @last_modified(my_last_modified)
     def retrieve(self, request, pk=None):
         return Response({'data': '2019', 'pk': pk})
 
 
 class EtagViewSet(viewsets.ViewSet):
-    @condition(etag_func=my_etag)
+    @etag(my_etag)
     def list(self, request):
         return Response({'data': 'etag'})
 
-    @condition(etag_func=my_etag)
+    @etag(my_etag)
     def retrieve(self, request, pk=None):
         return Response({'data': 'etag', 'pk': pk})

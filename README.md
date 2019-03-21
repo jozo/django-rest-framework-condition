@@ -1,6 +1,8 @@
 # django-rest-framework-condition
 
 [![Build Status](https://travis-ci.com/jozo/django-rest-framework-condition.svg?branch=master)](https://travis-ci.com/jozo/django-rest-framework-condition)
+[![codecov](https://codecov.io/gh/jozo/django-rest-framework-condition/branch/master/graph/badge.svg)](https://codecov.io/gh/jozo/django-rest-framework-condition)
+
 
 This package allows you to use [`@condition`](https://docs.djangoproject.com/en/2.1/topics/conditional-view-processing/) decorator from Django on ViewSet or
 APIView from Django Rest Framework. In other words, you can use http headers 
@@ -14,7 +16,7 @@ Similarly as in Django you can use shortcut decorators `@last_modified` and
 Tested with:
 * Python: 2.7, 3.7
 * Django: 1.11, 2.0, 2.1, 2.2
-* Django Rest Framework: 3.9
+* Django Rest Framework: 3.8, 3.9
 
 
 Installation
