@@ -12,6 +12,9 @@ setup(name='django-rest-framework-condition',
       long_description=long_description,
       long_description_content_type='text/markdown',
       url='https://github.com/jozo/django-rest-framework-condition',
+      install_requires=[
+          'Django'
+      ],
       classifiers=[
           'Programming Language :: Python :: 2',
           'Programming Language :: Python :: 3',
