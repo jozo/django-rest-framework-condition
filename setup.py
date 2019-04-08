@@ -4,7 +4,7 @@ with open('README.md', 'r') as fh:
     long_description = fh.read()
 
 setup(name='django-rest-framework-condition',
-      version='0.1.0',
+      version='0.1.1',
       packages=find_packages(),
       author='jozo',
       author_email='hi@jozo.io',
