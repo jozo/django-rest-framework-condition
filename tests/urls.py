@@ -5,6 +5,7 @@ from rest_framework.routers import DefaultRouter
 from tests.views import (
     LastModifiedApiView, NoConditionApiView, ETagApiView,
     LastModifiedViewSet, NoConditionViewSet, EtagViewSet,
+    EtagFromKwargsViewSet
 )
 
 router = DefaultRouter()
@@ -13,10 +14,12 @@ if drf_version < '3.9':
     router.register('no-condition', NoConditionViewSet, base_name='no-condition')
     router.register('last-modified', LastModifiedViewSet, base_name='last-modified')
     router.register('etag', EtagViewSet, base_name='etag')
+    router.register('etag-kwargs', EtagFromKwargsViewSet, base_name='etag-kwargs')
 else:
     router.register('no-condition', NoConditionViewSet, basename='no-condition')
     router.register('last-modified', LastModifiedViewSet, basename='last-modified')
     router.register('etag', EtagViewSet, basename='etag')
+    router.register('etag-kwargs', EtagFromKwargsViewSet, basename='etag-kwargs')
 
 if django_version < (2, 0, 0):
     from django.conf.urls import url, include

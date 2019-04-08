@@ -22,7 +22,7 @@ def condition(etag_func=None, last_modified_func=None):
 
             django_decorator = django_condition(etag_func, last_modified_func)
             decorated_viewset_method = django_decorator(patched_viewset_method)
-            return decorated_viewset_method(wsgi_request)
+            return decorated_viewset_method(wsgi_request, *args, **kwargs)
         return wrapper
     return decorator
 

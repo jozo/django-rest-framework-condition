@@ -6,12 +6,16 @@ from rest_framework.response import Response
 from rest_framework_condition import etag, last_modified
 
 
-def my_last_modified(request):
+def my_last_modified(request, *args, **kwargs):
     return datetime(2019, 1, 1)
 
 
-def my_etag(request):
+def my_etag(request, *args, **kwargs):
     return 'hash123'
+
+
+def etag_from_kwargs(request, *args, **kwargs):
+    return 'hash-{}'.format(kwargs['pk'])
 
 
 class NoConditionApiView(views.APIView):
@@ -55,5 +59,11 @@ class EtagViewSet(viewsets.ViewSet):
         return Response({'data': 'etag'})
 
     @etag(my_etag)
+    def retrieve(self, request, pk=None):
+        return Response({'data': 'etag', 'pk': pk})
+
+
+class EtagFromKwargsViewSet(viewsets.ViewSet):
+    @etag(etag_from_kwargs)
     def retrieve(self, request, pk=None):
         return Response({'data': 'etag', 'pk': pk})

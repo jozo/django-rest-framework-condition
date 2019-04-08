@@ -202,3 +202,10 @@ class TestEtagWithViewSetDetail(APITestCase):
         response = self.client.get(url, HTTP_IF_NONE_MATCH='"hash123"')
         assert response.status_code == status.HTTP_304_NOT_MODIFIED
         assert response['ETag'] == '"hash123"'
+
+    def test_etag_has_access_to_kwargs_from_view(self):
+        url = reverse('etag-kwargs-detail', args=[42])
+        response = self.client.get(url)
+        assert response.status_code == status.HTTP_200_OK
+        assert response['ETag'] == '"hash-42"'
+        assert response.data == {'data': 'etag', 'pk': '42'}
