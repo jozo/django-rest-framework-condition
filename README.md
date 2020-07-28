@@ -14,9 +14,9 @@ Similarly as in Django you can use shortcut decorators `@last_modified` and
 `@etag`.
 
 Tested with:
-* Python: 2.7, 3.7
-* Django: 1.11, 2.0, 2.1, 2.2
-* Django Rest Framework: 3.8, 3.9
+* Python: 3.7
+* Django: 2.2, 3.0
+* Django Rest Framework: 3.10, 3.11
 
 
 Installation
