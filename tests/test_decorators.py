@@ -1,4 +1,5 @@
 import calendar
+import json
 from datetime import datetime
 
 from django.urls import reverse
@@ -209,3 +210,33 @@ class TestEtagWithViewSetDetail(APITestCase):
         assert response.status_code == status.HTTP_200_OK
         assert response['ETag'] == '"hash-42"'
         assert response.data == {'data': 'etag', 'pk': '42'}
+
+
+class TestDecoratorMatchesBuiltin(APITestCase):
+    def check_responses(self, builtin_url, api_url):
+        builtin_response = self.client.get(builtin_url)
+        api_response = self.client.get(api_url)
+
+        assert builtin_response.status_code == api_response.status_code
+        assert json.loads(builtin_response.content) == api_response.data
+
+        # Check the headers added, but DRF is allowed to add additional
+        # headers, and the content length may differ.
+        for key in builtin_response._headers:
+            if key.lower() != 'content-length':
+                assert builtin_response[key] == api_response[key]
+
+    def test_etag(self):
+        self.check_responses(
+            builtin_url=reverse('builtin-view-etag'),
+            api_url=reverse('api-view-etag'))
+
+    def test_etag_with_kwargs(self):
+        self.check_responses(
+            builtin_url=reverse('builtin-view-etag-kwargs', args=[42]),
+            api_url=reverse('etag-kwargs-detail', args=[42]))
+
+    def test_last_modified(self):
+        self.check_responses(
+            builtin_url=reverse('builtin-view-last-modified'),
+            api_url=reverse('api-view-last-modified'))
