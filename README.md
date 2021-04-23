@@ -15,7 +15,7 @@ Similarly as in Django you can use shortcut decorators `@last_modified` and
 
 Tested with:
 * Python: 3.7
-* Django: 2.2, 3.0
+* Django: 2.2, 3.0, 3.1
 * Django Rest Framework: 3.10, 3.11
 
 
