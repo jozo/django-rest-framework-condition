@@ -4,14 +4,11 @@
 [![codecov](https://codecov.io/gh/jozo/django-rest-framework-condition/branch/master/graph/badge.svg)](https://codecov.io/gh/jozo/django-rest-framework-condition)
 
 
-This package allows you to use [`@condition`](https://docs.djangoproject.com/en/2.1/topics/conditional-view-processing/) decorator from Django on ViewSet or
-APIView from Django Rest Framework. In other words, you can use http headers 
-ETag and Last-modified with you APIs.
+This package allows you to use [`@condition`](https://docs.djangoproject.com/en/dev/topics/conditional-view-processing/) decorator from Django on ViewSet or APIView from Django Rest Framework. In other words, you can use HTTP headers ETag and Last-modified with your APIs.
 
-It doesn't create custom implementation of etags or last-modified header but uses ones from Django which means you can be sure it will be updated by Django's authors. 
+It doesn't create a custom implementation of etags or last-modified header but uses ones from Django which means you can be sure it will be updated by Django's authors.
 
-Similarly as in Django you can use shortcut decorators `@last_modified` and
-`@etag`.
+Similarly, as in Django, you can use shortcut decorators `@last_modified` and `@etag`.
 
 Tested with:
 * Python: 3.7, 3.8, 3.9
